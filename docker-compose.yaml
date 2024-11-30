@@ -11,8 +11,8 @@ services:
       - 67:67/udp # dhcp server
       - 68:68/tcp # dhcp server
     volumes:
-      - config:/opt/adguardhome/conf # app configuration
-      - work:/opt/adguardhome/work # app working directory
+      - /opt/adguardhome/conf:/opt/adguardhome/conf # app configuration
+      - /opt/adguardhome/work:/opt/adguardhome/work # app working directory
   node-exporter:
     image: prom/node-exporter
     volumes:
@@ -38,9 +38,3 @@ services:
       - /var/run:/var/run:rw
       - /sys:/sys:ro
       - /var/lib/docker/:/var/lib/docker:ro
-    
-volumes:
-  config:
-    driver: local
-  work:
-    driver: local
