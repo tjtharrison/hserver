@@ -1,0 +1,1 @@
+/exports/kubernetes/ client(rw,async,all_squash,anonuid=1000,anongid=1000)

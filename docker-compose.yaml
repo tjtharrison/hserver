@@ -1,12 +1,24 @@
 name: adguardhome
 
 services:
+  nfs:
+    image: nfs-server
+    build: 
+      context: .
+      dockerfile: Dockerfile.nfs
+    container_name: nfs
+    ports:
+      - "2049:2049"
+      - "20048:20048"
+    volumes:
+      - /mnt/nfs:/exports
+    platform: linux/x86_64
   adguardhome:
     image: adguard/adguardhome
     network_mode: host
     volumes:
-      - ./conf:/opt/adguardhome/conf # app configuration
-      - /opt/adguardhome/work:/opt/adguardhome/work # app working directory
+      - ./conf/AdGuardHome.yaml:/opt/adguardhome/conf/AdGuardHome.yaml 
+      - /opt/adguardhome/work:/opt/adguardhome/work
   node-exporter:
     image: prom/node-exporter
     volumes:
