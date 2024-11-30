@@ -6,8 +6,7 @@ helm-charts:
   namespaces:
     - name: hvm-access
   ingresses:
-    - name: adguard
+    - name: 192.168.0.218
       commonName: adguard.tjth.co
       secretName: adguard-tjth-co
       port: 8090
-      externalService: 192.168.0.218
