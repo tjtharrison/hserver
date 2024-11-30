@@ -113,7 +113,7 @@ dhcp:
   dhcpv4:
     gateway_ip: 192.168.0.1
     subnet_mask: 255.255.255.0
-    range_start: 192.168.0.50
+    range_start: 192.168.0.101
     range_end: 192.168.0.151
     lease_duration: 86400
     icmp_timeout_msec: 1000
