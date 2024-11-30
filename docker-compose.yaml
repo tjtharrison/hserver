@@ -3,7 +3,13 @@ name: adguardhome
 services:
   adguardhome:
     image: adguard/adguardhome
-    network_mode: host
+    ports:
+      - 53:53/tcp # plain dns over tcp
+      - 53:53/udp # plain dns over udp
+      - 8090:80/tcp # http web interface
+      - 3000:3000/tcp # initial setup web interface
+      - 67:67/udp # dhcp server
+      - 68:68/tcp # dhcp server
     volumes:
       - config:/opt/adguardhome/conf # app configuration
       - work:/opt/adguardhome/work # app working directory
