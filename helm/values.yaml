@@ -1,12 +1,12 @@
-name: hvm-access
-namespace: hvm-access
+name: hvm-network
+namespace: hvm-network
 helm-charts:
-  name: hvm-access
-  namespace: hvm-access
+  name: hvm-network
+  namespace: hvm-network
   namespaces:
-    - name: hvm-access
+    - name: hvm-network
   ingresses:
-    - name: 192.168.0.218
+    - name: adguard-http
       commonName: adguard.tjth.co
       secretName: adguard-tjth-co
       port: 8090
