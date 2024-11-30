@@ -108,7 +108,7 @@ whitelist_filters: []
 user_rules: []
 dhcp:
   enabled: true
-  interface_name: enp1s0
+  interface_name: enp3s0
   local_domain_name: lan
   dhcpv4:
     gateway_ip: 192.168.0.1
