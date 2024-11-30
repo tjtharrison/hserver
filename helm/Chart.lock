@@ -1,0 +1,6 @@
+dependencies:
+- name: helm-charts
+  repository: oci://ghcr.io/tjtharrison
+  version: 1.8.0
+digest: sha256:bb891e687c293d7b4638a86ee4a2dc1002aad2946c6472bf03ac4e363d23e0f0
+generated: "2024-11-30T19:28:31.224106Z"

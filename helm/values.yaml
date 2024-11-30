@@ -1,0 +1,13 @@
+name: hvm-access
+namespace: hvm-access
+helm-charts:
+  name: hvm-access
+  namespace: hvm-access
+  namespaces:
+    - name: hvm-access
+  ingresses:
+    - name: adguard
+      commonName: adguard.tjth.co
+      secretName: adguard-tjth-co
+      port: 8090
+      externalService: 192.168.0.218
