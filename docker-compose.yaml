@@ -1,0 +1,40 @@
+name: adguardhome
+
+services:
+  adguardhome:
+    image: adguard/adguardhome
+    ports:
+      - 53:53/tcp # plain dns over tcp
+      - 53:53/udp # plain dns over udp
+      - 8090:80/tcp # http web interface
+      - 3000:3000/tcp # initial setup web interface
+      - 67:67/udp # dhcp server
+      - 68:68/tcp # dhcp server
+    volumes:
+      - /opt/adguardhome/conf:/opt/adguardhome/conf # app configuration
+      - /opt/adguardhome/work:/opt/adguardhome/work # app working directory
+  node-exporter:
+    image: prom/node-exporter
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+    command:
+      - '--path.procfs=/host/proc'
+      - '--path.sysfs=/host/sys'
+      - '--collector.filesystem.ignored-mount-points="^(/rootfs|/host|)/(sys|proc|dev|host|etc)($$|/)"'
+      - '--collector.filesystem.ignored-fs-types="^(sys|proc|auto|cgroup|devpts|ns|au|fuse\.lxc|mqueue)(fs|)$$"'
+    ports:
+      - 9100:9100
+    restart: unless-stopped
+    container_name: node-exporter
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    container_name: cadvisor
+    ports:
+      - 9101:8080
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:rw
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro

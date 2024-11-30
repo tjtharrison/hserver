@@ -1,0 +1,12 @@
+name: hvm-network
+namespace: hvm-network
+helm-charts:
+  name: hvm-network
+  namespace: hvm-network
+  namespaces:
+    - name: hvm-network
+  ingresses:
+    - name: adguard-http
+      commonName: adguard.tjth.co
+      secretName: adguard-tjth-co
+      port: 8090
