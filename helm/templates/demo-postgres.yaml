@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  labels:
+    app: db
+  name: db
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db
+  template:
+    metadata:
+      labels:
+        app: db
+    spec:
+      containers:
+        - image: 'postgres:12.17'
+          imagePullPolicy: Always
+          name: db
+          ports:
+            - containerPort: 5432
+              name: db
+              protocol: TCP
+          resources:
+            limits:
+              cpu: 150m
+              memory: 50M
+            requests:
+              cpu: 50m
+              memory: 20M
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: demo-nfs-pvc
+      volumes:
+        - name: demo-nfs-pvc
+          persistentVolumeClaim:
+            claimName: demo-nfs-pvc
