@@ -55,11 +55,11 @@ if [[ -f /etc/exports ]]; then
     sudo rm /etc/exports
 fi
 
-if [ ! -f ./config/nfs-exports ]; then
-    sudo ln -s $(pwd)/config/nfs-exports /etc/exports
+if [ ! -f ./conf/nfs-exports ]; then
+    sudo ln -s $(pwd)/conf/nfs-exports /etc/exports
     sudo systemctl restart nfs-kernel-server
-elif [ -f ../config/nfs-exports ]; then
-    sudo ln -s $(pwd)/../config/nfs-exports /etc/exports
+elif [ -f ../conf/nfs-exports ]; then
+    sudo ln -s $(pwd)/../conf/nfs-exports /etc/exports
     sudo systemctl restart nfs-kernel-server
 else
     echo "No exports file found"
