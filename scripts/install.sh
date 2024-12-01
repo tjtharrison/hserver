@@ -55,10 +55,10 @@ if [[ -f /etc/exports ]]; then
     sudo rm /etc/exports
 fi
 
-if [ ! -f ./conf/nfs-exports ]; then
+if [ -f ./conf/nfs-exports ]; then
     sudo ln -s $(pwd)/conf/nfs-exports /etc/exports
     sudo systemctl restart nfs-kernel-server
-elif [ -f ../conf/nfs-exports ]; then
+elif [ ../conf/nfs-exports ]; then
     sudo ln -s $(pwd)/../conf/nfs-exports /etc/exports
     sudo systemctl restart nfs-kernel-server
 else
