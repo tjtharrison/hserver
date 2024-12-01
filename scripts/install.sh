@@ -35,15 +35,15 @@ docker compose up -d
 
 sudo apt install nfs-kernel-server
 
-mkdir -p /mnt/nfs
-chmod 777 /mnt/nfs
+sudo mkdir -p /mnt/nfs
+sudo chmod 777 /mnt/nfs
 
 # Add the following lines to /etc/exports if they do not exist already
 if ! grep -q "/mnt/nfs" /etc/exports; then
-    sudo echo "/mnt/nfs 192.168.0.220(rw,sync,no_subtree_check,no_root_squash)" >> /etc/exports
-    sudo echo "/mnt/nfs 192.168.0.221(rw,sync,no_subtree_check,no_root_squash)" >> /etc/exports
-    sudo echo "/mnt/nfs 192.168.0.222(rw,sync,no_subtree_check,no_root_squash)" >> /etc/exports
-    sudo echo "/mnt/nfs 192.168.0.223(rw,sync,no_subtree_check,no_root_squash)" >> /etc/exports
+    echo "/mnt/nfs 192.168.0.220(rw,sync,no_subtree_check,no_root_squash)" | sudo tee -a /etc/exports
+    echo "/mnt/nfs 192.168.0.221(rw,sync,no_subtree_check,no_root_squash)" | sudo tee -a /etc/exports
+    echo "/mnt/nfs 192.168.0.222(rw,sync,no_subtree_check,no_root_squash)" | sudo tee -a /etc/exports
+    echo "/mnt/nfs 192.168.0.223(rw,sync,no_subtree_check,no_root_squash)" | sudo tee -a /etc/exports
 fi
 
 sudo systemctl restart nfs-kernel-server
