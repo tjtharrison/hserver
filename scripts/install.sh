@@ -4,7 +4,7 @@
 # Update system
 ################
 
-sudo apt-ge t update
+sudo apt-get update
 sudo apt-get upgrade -y
 
 ################
@@ -38,7 +38,10 @@ fi
 
 # Check if nfs server is installed
 if [[ ! -f /etc/exports ]]; then
+    echo "Installing nfs server"
     sudo apt install nfs-kernel-server
+else
+    echo "NFS server already installed"
 fi
 
 # Check if nfs directory exists
