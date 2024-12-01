@@ -10,3 +10,10 @@ helm-charts:
       commonName: adguard.tjth.co
       secretName: adguard-tjth-co
       port: 8090
+
+nfs-subdir-external-provisioner:
+  nfs:
+    server: 192.168.0.219
+    path: /mnt/nfs
+  storageClass:
+    onDelete: true
