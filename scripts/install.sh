@@ -38,12 +38,13 @@ sudo apt install nfs-kernel-server
 sudo mkdir -p /mnt/nfs
 sudo chmod 777 /mnt/nfs
 
-# Add the following lines to /etc/exports if they do not exist already
-if ! grep -q "/mnt/nfs" /etc/exports; then
-    echo "/mnt/nfs 192.168.0.220(rw,sync,no_subtree_check,no_root_squash)" | sudo tee -a /etc/exports
-    echo "/mnt/nfs 192.168.0.221(rw,sync,no_subtree_check,no_root_squash)" | sudo tee -a /etc/exports
-    echo "/mnt/nfs 192.168.0.222(rw,sync,no_subtree_check,no_root_squash)" | sudo tee -a /etc/exports
-    echo "/mnt/nfs 192.168.0.223(rw,sync,no_subtree_check,no_root_squash)" | sudo tee -a /etc/exports
+if [ ! -f ./config/nfs-exports ]; then
+    cp ./config/nfs-exports /etc/exports
+elif [ -f ../config/nfs-exports ]; then
+    cp ../config/nfs-exports /etc/exports
+else
+    echo "No exports file found"
+    exit 1
 fi
 
 sudo systemctl restart nfs-kernel-server

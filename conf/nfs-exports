@@ -1,0 +1,4 @@
+/mnt/nfs 192.168.0.220(rw,sync,no_subtree_check,no_root_squash)
+/mnt/nfs 192.168.0.221(rw,sync,no_subtree_check,no_root_squash)
+/mnt/nfs 192.168.0.222(rw,sync,no_subtree_check,no_root_squash)
+/mnt/nfs 192.168.0.223(rw,sync,no_subtree_check,no_root_squash)
