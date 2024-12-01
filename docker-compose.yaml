@@ -7,6 +7,8 @@ services:
     volumes:
       - ./conf:/opt/adguardhome/conf # app configuration
       - /opt/adguardhome/work:/opt/adguardhome/work # app working directory
+    restart: always
+    container_name: adguard
   node-exporter:
     image: prom/node-exporter
     volumes:
@@ -20,7 +22,7 @@ services:
       - '--collector.filesystem.ignored-fs-types="^(sys|proc|auto|cgroup|devpts|ns|au|fuse\.lxc|mqueue)(fs|)$$"'
     ports:
       - 9100:9100
-    restart: unless-stopped
+    restart: always
     container_name: node-exporter
   cadvisor:
     image: gcr.io/cadvisor/cadvisor:latest
@@ -32,3 +34,4 @@ services:
       - /var/run:/var/run:rw
       - /sys:/sys:ro
       - /var/lib/docker/:/var/lib/docker:ro
+    restart: always
