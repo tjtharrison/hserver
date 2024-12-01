@@ -4,8 +4,8 @@
 # Update system
 ################
 
-apt-get update
-apt-get upgrade -y
+sudo apt-ge t update
+sudo apt-get upgrade -y
 
 ################
 # Install docker and launch containers
@@ -38,9 +38,9 @@ sudo apt install nfs-kernel-server
 mkdir -p /mnt/nfs
 chmod 777 /mnt/nfs
 
-echo "/mnt/nfs 192.168.0.220(rw,sync,no_subtree_check,no_root_squash)" >> /etc/exports
-echo "/mnt/nfs 192.168.0.221(rw,sync,no_subtree_check,no_root_squash)" >> /etc/exports
-echo "/mnt/nfs 192.168.0.222(rw,sync,no_subtree_check,no_root_squash)" >> /etc/exports
-echo "/mnt/nfs 192.168.0.223(rw,sync,no_subtree_check,no_root_squash)" >> /etc/exports
+sudo echo "/mnt/nfs 192.168.0.220(rw,sync,no_subtree_check,no_root_squash)" >> /etc/exports
+sudo echo "/mnt/nfs 192.168.0.221(rw,sync,no_subtree_check,no_root_squash)" >> /etc/exports
+sudo echo "/mnt/nfs 192.168.0.222(rw,sync,no_subtree_check,no_root_squash)" >> /etc/exports
+sudo echo "/mnt/nfs 192.168.0.223(rw,sync,no_subtree_check,no_root_squash)" >> /etc/exports
 
 sudo systemctl restart nfs-kernel-server
