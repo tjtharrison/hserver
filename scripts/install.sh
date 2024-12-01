@@ -39,9 +39,9 @@ sudo mkdir -p /mnt/nfs
 sudo chmod 777 /mnt/nfs
 
 if [ ! -f ./config/nfs-exports ]; then
-    cp ./config/nfs-exports /etc/exports
+    ln -s $(pwd)/config/nfs-exports /etc/exports
 elif [ -f ../config/nfs-exports ]; then
-    cp ../config/nfs-exports /etc/exports
+    ln -s $(pwd)/../config/nfs-exports /etc/exports
 else
     echo "No exports file found"
     exit 1
