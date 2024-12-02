@@ -1,0 +1,15 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: landscape-http
+  namespace: {{ .Values.namespace }}
+spec:
+  ipFamilies:
+  - IPv4
+  ports:
+    - name: landscape-http 
+      protocol: TCP 
+      port: 443
+spec:
+  type: ExternalName
+  externalName: 192.168.0.219
