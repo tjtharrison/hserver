@@ -66,3 +66,4 @@ else
     exit 1
 fi
 
+sudo service nfs-kernel-server restart
