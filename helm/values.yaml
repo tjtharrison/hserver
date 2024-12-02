@@ -12,7 +12,7 @@ helm-charts:
       port: 8090
     - name: landscape-http
       commonName: landscape.tjth.co
-      secretName: adguard-tjth-co
+      secretName: landscape-tjth-co
       port: 8090
 
 nfs-subdir-external-provisioner:
