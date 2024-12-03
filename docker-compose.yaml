@@ -1,14 +1,6 @@
 name: adguardhome
 
 services:
-  adguardhome:
-    image: adguard/adguardhome
-    network_mode: host
-    volumes:
-      - ./conf:/opt/adguardhome/conf # app configuration
-      - /opt/adguardhome/work:/opt/adguardhome/work # app working directory
-    restart: always
-    container_name: adguard
   node-exporter:
     image: prom/node-exporter
     volumes:
