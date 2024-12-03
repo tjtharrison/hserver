@@ -5,15 +5,6 @@ helm-charts:
   namespace: hserver
   namespaces:
     - name: hserver
-  ingresses:
-    - name: adguard-http
-      commonName: adguard.tjth.co
-      secretName: adguard-tjth-co
-      port: 8090
-    - name: landscape-http
-      commonName: landscape.tjth.co
-      secretName: landscape-tjth-co
-      port: 8090
 
 nfs-subdir-external-provisioner:
   nfs:
