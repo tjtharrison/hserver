@@ -12,3 +12,4 @@ nfs-subdir-external-provisioner:
     path: /mnt/nfs
   storageClass:
     onDelete: true
+    defaultClass: true
