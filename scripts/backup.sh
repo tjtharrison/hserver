@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Create backup dir if it doesn't exist
-mkdir /mnt/backup
+sudo mkdir /mnt/backup
 
 # Generate list of dirs
 exclude_patterns=("archive*" "*db-storage*" "*loki*" "*prometheus*" "*grafana*")
@@ -12,7 +12,7 @@ dirs=$(find /mnt/nfs/ -maxdepth 1 -mindepth 1 -type d "${exclude_args[@]}")
 for dir in $dirs; do
   dir_name=$(basename $dir)
   today_date=$(date +%F)
-  tar -czf /mnt/backup/$today_date_$dir_name.tar.gz $dir
+  sudo tar -czf /mnt/backup/$today_date_$dir_name.tar.gz $dir
 done
 
 # Remove old backups
