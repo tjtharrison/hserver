@@ -6,7 +6,7 @@ sudo mkdir /mnt/backup
 # Generate list of dirs
 exclude_patterns=("archive*" "*db-storage*" "*loki*" "*prometheus*" "*grafana*")
 exclude_args=("${exclude_patterns[@]/#/-not -name }")
-echo "find /mnt/nfs/ -maxdepth 1 -mindepth 1 -type d "${exclude_args[@]}""
+echo "find /mnt/nfs/ -maxdepth 1 -mindepth 1 -type d \"${exclude_args[@]}\""
 dirs=$(find /mnt/nfs/ -maxdepth 1 -mindepth 1 -type d \"${exclude_args[@]}\")
 
 # Backup each dir
