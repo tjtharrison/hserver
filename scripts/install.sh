@@ -66,3 +66,9 @@ else
     exit 1
 fi
 
+if [ -f ~/.ssh/config ]; then
+    echo "Config file already exists"
+else
+    cp ./conf/ssh-config ~/.ssh/config
+fi
+

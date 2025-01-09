@@ -1,0 +1,4 @@
+Host hnas
+  HostName 192.168.0.200
+  User backupuser
+  PubkeyAcceptedKeyTypes=+ssh-rsa

@@ -23,4 +23,4 @@ done
 # find $backup_dir -type f -mtime +30 -exec rm {} \;
 
 # Copy backup to NAS
-# rsync -avh /mnt/backup root@192.168.0.200:/data/server-backups/hserver
+rsync -avh /mnt/backup hnas:/data/server-backups/hserver
