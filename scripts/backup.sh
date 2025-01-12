@@ -5,7 +5,7 @@ backup_dir="/mnt/backup"
 source_dir="/mnt/nfs"
 
 # Generate list of dirs with exclude patterns
-dirs=$(find $source_dir -maxdepth 1 -mindepth 1 -type d -not -name "archive*" -not -name "*db-storage*" -not -name "*loki*" -not -name "*prometheus*" -not -name "*grafana*")
+dirs=$(find $source_dir -maxdepth 1 -mindepth 1 -type d -not -name "archive*" -not -name "*db-storage*" -not -name "*loki*" -not -name "*prometheus*" -not -name "*grafana*" -not -name "*consul*")
 
 # Create backup dir if it doesn't exist
 if [ ! -d $backup_dir ]; then
