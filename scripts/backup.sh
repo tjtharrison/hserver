@@ -26,5 +26,5 @@ done
 
 # Copy backup to NAS
 echo "Copying backup to NAS.."
-rsync -avh /mnt/backup hnas:/data/server-backups/hserver
+rsync -avh /mnt/backup hnas:/data/server-backups/$HOSTNAME
 echo "Mischief managed!"
