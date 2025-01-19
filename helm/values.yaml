@@ -13,3 +13,11 @@ nfs-subdir-external-provisioner:
   storageClass:
     onDelete: true
     defaultClass: true
+
+nfs-subdir-external-provisioner-h400:
+  nfs:
+    server: 192.168.0.210
+    path: /mnt/nfs
+  storageClass:
+    onDelete: true
+    defaultClass: false
