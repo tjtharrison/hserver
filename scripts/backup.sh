@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Fail on error
+set -e
+
 # Mark unsuccessful until completion
 echo "tjth_backup_status{hostname=\"$HOSTNAME\"} 0" >> /tmp/node_exporter/backup.prom
 
@@ -15,6 +18,9 @@ if [ ! -d $backup_dir ]; then
   mkdir $backup_dir
 fi
 
+# It's okay if this doesn't work the first time
+set +e
+
 # Backup each dir
 for dir in $dirs; do
   echo "Backing up $dir.."
@@ -24,11 +30,14 @@ for dir in $dirs; do
   echo "Backup of $dir done"
 done
 
+# Re-enable fail on error
+set -e
+
 # Remove old backups
-# find $backup_dir -type f -mtime +30 -exec rm {} \;
+find $backup_dir -type f -mtime +7 -exec rm {} \;
 
 # Copy backup to NAS
 echo "Copying backup to NAS.."
 rsync -avh /mnt/backup hnas:/data/server-backups/$HOSTNAME
 echo "Mischief managed!"
-echo "tjth_backup_status{hostname=\"$HOSTNAME\"} 1" >> /tmp/node_exporter/backup.prom
+echo "tjth_backup_status{hostname=\"$HOSTNAME\"} 1" > /tmp/node_exporter/backup.prom
