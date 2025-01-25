@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Mark unsuccessful until completion
+echo "tjth_backup_status{hostname=\"$HOSTNAME\"} 0" >> /tmp/node_exporter/backup.prom
+
 # Create backup dir if it doesn't exist
 backup_dir="/mnt/backup"
 source_dir="/mnt/nfs"
@@ -28,3 +31,4 @@ done
 echo "Copying backup to NAS.."
 rsync -avh /mnt/backup hnas:/data/server-backups/$HOSTNAME
 echo "Mischief managed!"
+echo "tjth_backup_status{hostname=\"$HOSTNAME\"} 1" >> /tmp/node_exporter/backup.prom
