@@ -13,3 +13,12 @@ nfs-subdir-external-provisioner:
   storageClass:
     onDelete: true
     defaultClass: true
+
+nas-nfs-subdir-external-provisioner:
+  nfs:
+    server: 192.168.0.200
+    path: /data/server-backups
+  storageClass:
+    onDelete: true
+    defaultClass: false
+    name: nas-nfs-client
