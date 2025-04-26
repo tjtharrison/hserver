@@ -34,7 +34,7 @@ done
 set -e
 
 # Remove old backups
-find $backup_dir -type f -mtime +7 -exec rm {} \;
+find $backup_dir -type f -mtime +7 -exec rm -rf {} \;
 
 # Copy backup to NAS
 echo "Copying backup to NAS.."
