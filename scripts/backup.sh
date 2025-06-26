@@ -3,6 +3,9 @@
 # Fail on error
 set -e
 
+# Set permissions 
+sudo chmod -R 777 /tmp/node_exporter
+
 # Mark unsuccessful until completion
 echo "tjth_backup_status{hostname=\"$HOSTNAME\"} 0" >> /tmp/node_exporter/backup.prom
 
